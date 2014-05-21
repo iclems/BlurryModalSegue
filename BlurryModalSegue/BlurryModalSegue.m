@@ -42,8 +42,9 @@ static UIImageOrientation ImageOrientationFromInterfaceOrientation(UIInterfaceOr
     if (self)
     {
         // Some sane defaults
-        self.backingImageBlurRadius = @(20);
-        self.backingImageSaturationDeltaFactor = @(.45f);
+        _backingImageBlurRadius = @(20);
+        _backingImageSaturationDeltaFactor = @(.45f);
+        _afterScreenUpdates = NO;
         
         [[[self class] appearance] applyInvocationTo:self];
     }
@@ -63,7 +64,7 @@ static UIImageOrientation ImageOrientationFromInterfaceOrientation(UIInterfaceOr
     
     UIGraphicsBeginImageContextWithOptions(windowBounds.size, YES, 0.0);
 
-    [source.view.window drawViewHierarchyInRect:windowBounds afterScreenUpdates:NO];
+    [source.view.window drawViewHierarchyInRect:windowBounds afterScreenUpdates:self.afterScreenUpdates];
     UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
     
     UIGraphicsEndImageContext();

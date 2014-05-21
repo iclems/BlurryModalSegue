@@ -15,6 +15,7 @@ typedef UIImage*(^ProcessBackgroundImage)(BlurryModalSegue* blurryModalSegue, UI
 @interface BlurryModalSegue : UIStoryboardSegue
 
 @property (nonatomic, copy) ProcessBackgroundImage processBackgroundImage;
+@property (nonatomic, assign) BOOL afterScreenUpdates;
 
 @property (nonatomic) NSNumber* backingImageBlurRadius UI_APPEARANCE_SELECTOR;
 @property (nonatomic) NSNumber* backingImageSaturationDeltaFactor UI_APPEARANCE_SELECTOR;
